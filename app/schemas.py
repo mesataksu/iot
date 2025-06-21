@@ -16,7 +16,7 @@ class SensorData(SensorDataBase):
     id: int
 
     class Config:
-        from_attributes = True 
+        orm_mode = True 
 
 class RuleBase(BaseModel):
     name: str
@@ -52,4 +52,4 @@ class Rule(RuleBase):
     last_triggered: Optional[datetime] = None
 
     class Config:
-        from_attributes = True
+        orm_mode = True
