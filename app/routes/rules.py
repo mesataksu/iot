@@ -10,7 +10,8 @@ router = APIRouter()
 @router.post("/rules", response_model=schemas.Rule)
 def create_rule(rule: schemas.RuleCreate, db: Session = Depends(get_db)):
     """Create a new automation rule"""
-    return crud.create_rule(db, rule)
+    db_rule = crud.create_rule(db, rule)
+    return schemas.Rule.model_validate(db_rule)
 
 @router.get("/rules", response_model=List[schemas.Rule])
 def read_rules(
